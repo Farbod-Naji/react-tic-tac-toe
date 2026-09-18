@@ -1,15 +1,13 @@
 import { useState } from "react";
 
-export function Square({squareValue = "1"}) {
+export function Square({squareValue = "1", onClick}) {
   const [val, setValue] = useState("");
 
   function handleClick() {
-    console.log(val);
-    setValue(squareValue);
-    if (val != squareValue)
+    // console.log(val);
+    onClick();
+    if (val == "")
       setValue(squareValue);
-    else
-      setValue("");
   }
   
   // return <button className="square">{val}</button>;
@@ -21,25 +19,34 @@ export default function Board() {
 
   console.log(nextPiece);
 
+  function alteredPiece(){
+    console.log("clicked");
+    if (nextPiece == "x")
+      setNextPiece("o");
+    else
+      setNextPiece("x");
+  }
+
   return(<>
     <div class="board-row">
-      <Square squareValue={nextPiece} />
-      <Square squareValue={nextPiece} />
-      <Square squareValue={nextPiece} />
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
     </div>
 
     <div class="board-row">
-      <Square squareValue={nextPiece} />
-      <Square squareValue={nextPiece} />
-      <Square squareValue={nextPiece} />
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
     </div>
 
     <div class="board-row">
-      <Square squareValue={nextPiece} />
-      <Square squareValue={nextPiece} />
-      <Square squareValue={nextPiece} />
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
+      <Square squareValue={nextPiece} onClick={() => alteredPiece()}/>
     </div>
   </>);
+  
 }
 
 
